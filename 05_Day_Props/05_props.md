@@ -178,7 +178,7 @@ const App = () => {
 }
 
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
+
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -236,7 +236,6 @@ const App = () => (
 )
 
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -300,7 +299,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -334,7 +332,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -368,7 +365,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -524,7 +520,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -609,7 +604,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -667,7 +661,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -821,7 +814,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -898,7 +890,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -976,6 +967,26 @@ const UserCard = ({ user: { firstName, lastName, image } }) => (
   </div>
 )
 
+// A button component
+
+const Button = ({ text, onClick, style }) => (
+  <button style={style} onClick={onClick}>
+    {text}
+  </button>
+)
+
+// CSS styles in JavaScript Object
+const buttonStyles = {
+  backgroundColor: '#61dbfb',
+  padding: 10,
+  border: 'none',
+  borderRadius: 5,
+  margin: 3,
+  cursor: 'pointer',
+  fontSize: 18,
+  color: 'white',
+}
+
 // Main Component
 const Main = ({ user, techs, greetPeople, handleTime }) => (
   <main>
@@ -985,8 +996,8 @@ const Main = ({ user, techs, greetPeople, handleTime }) => (
         <TechList techs={techs} />
       </ul>
       <UserCard user={user} />
-      <Button text='Greet People' onClick={greetPeople} />
-      <Button text='Show Time' onClick={handleTime} />
+      <Button text='Greet People' onClick={greetPeople} style={buttonStyles} />
+      <Button text='Show Time' onClick={handleTime} style={buttonStyles} />
     </div>
   </main>
 )
@@ -1011,7 +1022,7 @@ const App = () => {
       firstName: 'Asabeneh',
       lastName: 'Yetayeh',
     },
-    date: new Date(),
+    date: new Date(), // date needs to be formatted to a human readable format
   }
   const date = new Date()
   const techs = ['HTML', 'CSS', 'JavaScript']
@@ -1039,95 +1050,6 @@ const App = () => {
   )
 }
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
-ReactDOM.render(<App />, rootElement)
-```
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-
-const welcome = 'Welcome to 30 Days Of React'
-const title = 'Getting Started React'
-const subtitle = 'JavaScript Library'
-const author = {
-  firstName: 'Asabeneh',
-  lastName: 'Yetayeh',
-}
-const date = 'Oct 4, 2020'
-
-const copyRight = 'Copyright 2020'
-const techs = ['HTML', 'CSS', 'JavaScript']
-
-// Header Component
-const Header = (props) => (
-  <header>
-    <div className='header-wrapper'>
-      <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
-      <h3>
-        {props.author.firstName} {props.author.lastName}
-      </h3>
-      <p>{props.date}</p>
-    </div>
-  </header>
-)
-
-// User Card Component
-const UserCard = ({ firstName, lastName, image }) => (
-  <div className='user-card'>
-    <img src={image} alt={firstName} />
-    <h2>
-      {firstName}
-      {lastName}
-    </h2>
-  </div>
-)
-
-// TechList Component
-const TechList = (props) => {
-  const techsFormatted = props.techs.map((tech) => <li key={tech}>{tech}</li>)
-  return techsFormatted
-}
-
-// Main Component
-const Main = () => (
-  <main>
-    <div className='main-wrapper'>
-      <p>Prerequisite to get started react.js:</p>
-      <ul>
-        <TechList techs={techs} />
-      </ul>
-    </div>
-  </main>
-)
-
-// Footer Component
-const Footer = (props) => (
-  <footer>
-    <div className='footer-wrapper'>
-      <p>{props.copyRight}</p>
-    </div>
-  </footer>
-)
-
-// The App, or the parent or the container component
-const App = () => (
-  <div className='app'>
-    <Header
-      welcome={welcome}
-      title={title}
-      subtitle={subtitle}
-      author={author}
-      date={date}
-    />
-    <Main />
-    <Footer copyRight={copyRight} />
-  </div>
-)
-
-const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
 ReactDOM.render(<App />, rootElement)
 ```
 
@@ -1160,4 +1082,4 @@ We will cover propTypes in detail in other section.
 
 🎉 CONGRATULATIONS ! 🎉
 
-[<< Day 4](../04_Day_Component/04_components.md) | [Day 6 >>]()
+[<< Day 4](../04_Day_Component/04_components.md) | [ >>](../06_Day_Map_List_Keys/05_map_list_keys.md)
