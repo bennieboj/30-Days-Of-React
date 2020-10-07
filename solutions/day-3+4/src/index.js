@@ -104,7 +104,7 @@ for(var i = 0; i < 4; i++){
   }
   items.push(<li key={i}><button style={buttonStyles}> action {hexaColor()} </button></li>)
 }
-//const Buttons = () => {items}
+const MyList = () => <ol>{items}</ol>
 
 const copyRight = '2020'
 
@@ -122,9 +122,7 @@ const App = () => (
   <div className='app'>
     <Header />
     <Main />
-    <ol>
-      {items}
-    </ol>
+    <MyList />
     <Footer />
   </div>
 )
