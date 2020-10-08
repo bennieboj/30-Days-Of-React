@@ -112,24 +112,15 @@ const Footer = ({ copyRight }) => (
   </footer>
 )
 
-// Hexadecimal color generator
-const hexaColor = () => {
-  let str = '0123456789abcdef'
-  let color = ''
-  for (let i = 0; i < 6; i++) {
-    let index = Math.floor(Math.random() * str.length)
-    color += str[index]
-  }
-  return '#' + color
-}
+const ItemGridLine = ({ backgroundColorFunction, items }) => {
+  let groupByN = (n, data) => {
+    let result = [];
+    for (let i = 0; i < data.length; i += n) result.push(data.slice(i, i + n));
+    return result;
+  };
 
-const LineNumbers = ({ numbers }) => {
-
-  return numbers.map((number) => {
-    const color = (function(number) {
-      if(number%2===0) return 'green'
-      return 'red'
-    })(number);
+  return items.map((item) => {
+    const color = backgroundColorFunction(item);
     const divStyles = {
       display: 'inline-block',
       width: '100px',
@@ -138,24 +129,59 @@ const LineNumbers = ({ numbers }) => {
       border: '1px solid black',
       textAlign: 'center'
     }
-  return <div key={number} style={divStyles}>{number}</div>
-})
+    return <div key={item} style={divStyles}>{item}</div>
+  })
 }
 
-const items = []
-for(var i = 0; i < 4; i++){
-  const buttonStyles = {
-    padding: '10px 20px',
-    background: hexaColor(),
-    border: 'none',
-    borderRadius: 5,
-  }
-  items.push(<li key={i}><button style={buttonStyles}> action {hexaColor()} </button></li>)
+const ItemGrid = ({ backgroundColorFunction, items }) => {
+  let groupByN = (n, data) => {
+    let result = [];
+    for (let i = 0; i < data.length; i += n) result.push(data.slice(i, i + n));
+    return result;
+  };
+
+  items = groupByN(8, items)
+
+  return items.map((items2) => {
+    return <div><ItemGridLine backgroundColorFunction={backgroundColorFunction} items={items2}/><br/></div>
+  })
 }
-const MyList = () => {
-  const numbers = [1, 2, 3, 4, 5]
-  return (<LineNumbers numbers={numbers} />)
+
+
+const MyColoredNumbersGrid = ( {numberOfItems} ) => {
+    const numberItems = Array.apply(null, {length: numberOfItems}).map(Number.call, Number)
+    function mapItemToColor (number) {
+      function isPrime(num) {
+        for(var i = 2; i < num; i++)
+          if(num % i === 0) return false;
+        return num > 1;
+      }
+      if(isPrime(number)) return 'red'
+
+      if(number%2===0) return 'green'
+      return 'yellow'
+    }
+  return (<ItemGrid backgroundColorFunction={mapItemToColor} items={numberItems} />)
 }
+
+
+const MyHexGrid = ( {numberOfItems} ) => {
+    const hexaColor = () => {
+      let str = '0123456789abcdef'
+      let color = ''
+      for (let i = 0; i < 6; i++) {
+        let index = Math.floor(Math.random() * str.length)
+        color += str[index]
+      }
+      return '#' + color
+    }
+    const hexItems = Array.apply(null, {length: numberOfItems}).map(Function.call, hexaColor)
+    function mapItemToColor (item) {
+      return item
+    }
+  return (<ItemGrid backgroundColorFunction={mapItemToColor} items={hexItems} />)
+}
+
 
 // The App, or the parent or the container component
 // Functional Component
@@ -182,6 +208,8 @@ const App = () => {
     alert('Welcome to 30 Days Of React Challenge, 2020')
   }
 
+  const numberOfItems = 20
+
   return (
     <div className='app'>
       <Header data={data} />
@@ -191,7 +219,9 @@ const App = () => {
         handleTime={handleTime}
         greetPeople={greetPeople}
       />
-      <MyList/>
+      <MyColoredNumbersGrid numberOfItems={numberOfItems}/>
+      <br/>
+      <MyHexGrid numberOfItems={numberOfItems}/>
       <Footer copyRight={date} />
     </div>
   )
