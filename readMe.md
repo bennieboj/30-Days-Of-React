@@ -31,10 +31,12 @@
 |06|[List, Map and Keys](./06_Day_Map_List_Keys/06_map_list_keys.md)|
 |07|[Class Components](./07_Day_Class_Components/07_class_components.md)|
 |08|[States](./08_Day_States/08_states.md)|
-|09|[Conditional Rendering 😞]()|
-|10|[Events 😞]()|
-|11|[Forms 😞]()|
+|09|[Conditional Rendering](./09_Day_Conditional_Rendering/09_conditional_rendering.md)|
+|10|[React Project Folder Structure](./10_React_Project_Folder_Structure/10_react_project_folder_structure.md)|
+|11|[Events 😞]()|
+|12|[Forms 😞]()|
 |13|[Controlled and Uncondrolled Component 😞]()|
+|13|[Component Life Cycles😞]()|
 
 
 🧡🧡🧡 HAPPY CODING 🧡🧡🧡<div>
@@ -282,7 +284,7 @@ Programming languages are similar to human languages. English or many other lang
 I made a deliberate mistake. As a result, the console raises syntax errors. Actually, the syntax is very informative. It informs what type of mistake was made. By reading the error feedback guideline, we can correct the syntax and fix the problem. The process of identifying and removing errors from a program is called debugging. Let us fix the errors:
 
 ```js
-console.log('Hello, World!')
+console.log("Hello, World!")
 console.log('Hello, World!')
 ```
 
